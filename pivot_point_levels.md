@@ -10,9 +10,11 @@ EXAMPLE
 ```
 //@version=5  
 indicator("Weekly Pivots",  max_lines_count=500,  overlay=true)  
-timeframe  =  "1W" 
-pivotPointsArray  =  ta.pivot_point_levels("Camarilla",  timeframe)  
-
+timeframe  =  "1W"  
+typeInput  =  input.string("Traditional",  "Type",  options=["Traditional",  "Fibonacci",  "Woodie",  "Classic",  "DM",  "Camarilla"])  
+weekChange  =  timeframe.change(timeframe)  
+pivotPointsArray  =  ta.pivot_point_levels(typeInput,  weekChange)  
+if  weekChange  
 for  pivotLevel  in  pivotPointsArray  
 line.new(time,  pivotLevel,  time  +  timeframe.in_seconds(timeframe)  *  1000,  pivotLevel,  xloc=xloc.bar_time)
 ```
