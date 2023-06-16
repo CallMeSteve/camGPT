@@ -1,5 +1,4 @@
-
-#request.security
+### request.security
 
 Requests data from another symbol and/or timeframe.
 
